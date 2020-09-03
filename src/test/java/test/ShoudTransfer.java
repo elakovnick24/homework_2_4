@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class ShoudTransfer {
 
     @Test
-    void shouldTransferMoneyBetweenOwnCardsV2() {
+    void shouldTransferMoneyBetweenOwnCards() {
 
         val loginPage = open("http://localhost:9999", LoginPage.class);
 // можно заменить на val loginPage = open("http://localhost:9999", LoginPageV2.class);
@@ -23,5 +23,18 @@ public class ShoudTransfer {
         val transaction = DataHelper.getDashboardPage1();
         dashboardPage.amountFromCard1(transaction);
 
-       }
+    }
+
+    @Test
+    void shouldTransferMoneyBetweenOwnCards1(){
+        val loginPage = open("http://localhost:9999", LoginPage.class);
+// можно заменить на val loginPage = open("http://localhost:9999", LoginPageV2.class);
+        val authInfo = DataHelper.getAuthInfo();
+        val verificationPage = loginPage.validLogin(authInfo);
+        val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        verificationPage.validVerify(verificationCode);
+        val dashboardPage = DashboardPage.transaction2();
+        val transaction = DataHelper.getDashboardPage2();
+        dashboardPage.amountFromCard2(transaction);
+    }
 }

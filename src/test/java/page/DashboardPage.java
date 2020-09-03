@@ -21,18 +21,12 @@ public class DashboardPage {
 
     }
 
-    public void DashboardPage () {
-
-    }
-
-
-
     public static TransactionPage transaction1() {
         card1.click();
         return new TransactionPage();
     }
 
-    public TransactionPage transaction2 () {
+    public static TransactionPage transaction2 () {
         card2.click();
         return new TransactionPage();
     }
