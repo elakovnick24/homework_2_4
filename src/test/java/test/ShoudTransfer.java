@@ -37,4 +37,16 @@ public class ShoudTransfer {
         val transaction = DataHelper.getDashboardPage2();
         dashboardPage.amountFromCard2(transaction);
     }
+
+    @Test
+    void shouldTransferMoneyBetweenOwnCards2() {
+        val loginPage = open("http://localhost:9999", LoginPage.class);
+        val authInfo = DataHelper.getOtherAuthInfo();
+        val verificationPage = loginPage.validLogin(authInfo);
+        val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
+        verificationPage.validVerify(verificationCode);
+        val dashboardPage = DashboardPage.transaction1();
+        val transaction = DataHelper.getDashboardPage1();
+        dashboardPage.amountFromCard1(transaction);
+    }
 }
