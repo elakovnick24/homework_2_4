@@ -45,8 +45,6 @@ public class ShoudTransfer {
         val verificationPage = loginPage.validLogin(authInfo);
         val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
         verificationPage.validVerify(verificationCode);
-        val dashboardPage = DashboardPage.transaction1();
-        val transaction = DataHelper.getDashboardPage1();
-        dashboardPage.amountFromCard1(transaction);
+        DashboardPage.page();
     }
 }
